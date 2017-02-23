@@ -2,9 +2,8 @@ class ConvertVoicesJob < ApplicationJob
   queue_as :default
 
   def perform(*params)
-  	voices = Voice.all
-    for v in voices
-	   puts "Convert the voice: #{v.name}"
+	Voice.where(converted: false).find_each do |voice|
+	  puts "Convert the voice: #{voice.name}"
 	end
   end
 end
