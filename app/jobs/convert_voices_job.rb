@@ -2,6 +2,10 @@ class ConvertVoicesJob < ApplicationJob
   queue_as :default
 
   def perform(*params)
+
+  	Rails.logger.info("Convert Voices Job RUNNING at #{Time.now}")
+
+=begin
 	Voice.where(converted: false).find_each do |voice|
 		source_path = Rails.root.to_s + "/public" + voice.source_url.to_s
 		puts "Convert the voice: #{source_path}"
@@ -11,6 +15,8 @@ class ConvertVoicesJob < ApplicationJob
 	    voice.destination_url = destination_path
 	    voice.converted = true
 	    voice.save!
+	    UserMailer.converted_email(voice).deliver_now
 	end
+=end
   end
 end

@@ -4,7 +4,7 @@
 # http://en.wikipedia.org/wiki/Cron
 
 every 1.minute do # 1.minute 1.day 1.week 1.month 1.year is also supported
-  runner "ConvertVoicesJob.perform_later", :environment => "development", :output => 'log/convert_voices_job.log'
+  runner "ConvertVoicesJob.perform_later", :environment => "development", :output => 'log/conver_voices_job.log'
 end
 
 # Example:

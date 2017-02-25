@@ -6,6 +6,7 @@ class VoicesController < ApplicationController
   def index
     @voices = Voice.all
     ConvertVoicesJob.perform_later
+    #UserMailer.converted_email(Voice.last).deliver
   end
 
   # GET /voices/1
