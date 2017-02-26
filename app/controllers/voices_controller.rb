@@ -5,7 +5,7 @@ class VoicesController < ApplicationController
   # GET /voices.json
   def index
     @voices = Voice.all
-    ConvertVoicesJob.perform_later
+    #ConvertVoicesJob.perform_later
     #UserMailer.converted_email(Voice.last).deliver
   end
 
